@@ -5,7 +5,7 @@
 import PrimoStudioAltmetricsComponent from './altmetrics.component';
 
 export const PrimoStudioAltmetricsModule = angular
-    .module('primoStudioAltmetricsModule', [])
+    .module('primoStudioAltmetrics', [])
         .component(PrimoStudioAltmetricsComponent.selector, PrimoStudioAltmetricsComponent)
         .name;
 
