@@ -1,0 +1,27 @@
+{
+  "name": "primo-studio-altmetrics",
+  "version": "0.0.1",
+  "description": "Primo Studio Altmetrics addon",
+  "main": "js/primoStudioAltmetrics.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uleodolter/primo-studio-altmetrics.git"
+  },
+  "keywords": [
+    "Altmetrics",
+    "primo",
+    "studio",
+    "primo-explore"
+  ],
+  "author": "Ulrich Leodolter <ulrich.leodolter@obvsg.at> (https://www.obvsg.at/)",
+  "contributors" : [
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uleodolter/primo-studio-altmetrics/issues"
+  },
+  "homepage": "https://github.com/uleodolter/primo-studio-altmetrics#readme"
+}
