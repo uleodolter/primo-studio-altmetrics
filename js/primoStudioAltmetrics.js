@@ -93,7 +93,7 @@ var PrimoStudioAltmetricsController = function () {
                     vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(function () {
                         try {
                             // Get the altmetrics widget
-                            angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {});
+                            vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {});
                             // Create our new Primo service
                             var altmetricsSection = {
                                 scrollId: "altmetrics",
