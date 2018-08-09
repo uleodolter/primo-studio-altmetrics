@@ -182,4 +182,6 @@ var _altmetrics2 = _interopRequireDefault(_altmetrics);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+app.requires.push('primoStudioAltmetrics');
+
 },{"./altmetrics/altmetrics.module":3}]},{},[4]);
