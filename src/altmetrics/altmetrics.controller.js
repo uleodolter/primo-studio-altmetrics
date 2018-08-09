@@ -18,16 +18,18 @@ class PrimoStudioAltmetricsController {
     }
 
     getConfigApiKey() {
-        return this.studioConfig[0].apikey;
+        return this.studioConfig[0].apikey || '';
     }
 
     getConfigISBN() {
-        return this.studioConfig[0].isbn;
+        return this.studioConfig[0].isbn || '';
     }
 
     $onInit() {
 
         let vm = this;
+
+        vm.altmetric_id = '';
 
         // the prm-full-view container
         vm.parentElement = vm.$element.parent()[0];
@@ -50,7 +52,8 @@ class PrimoStudioAltmetricsController {
             // If we've got a doi to work with check whether altmetrics has data for it.
             // If so, make our div visible and create a new Altmetrics service
             vm.$timeout(() => {
-                vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(() => {
+                vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then((res) => {
+                    vm.altmetric_id = res.data.altmetric_id;
                     try {
                         // Get the altmetrics widget
                         vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(() => {});
