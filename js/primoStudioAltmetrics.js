@@ -15,7 +15,7 @@ var PrimoStudioAltmetricsComponent = {
     selector: 'primoStudioAltmetrics',
     controller: _altmetrics2.default,
     bindings: { parentCtrl: '<' },
-    template: '<div id="altm1" ng-if="$ctrl.doi" class="altmetric-embed" data-hide-no-mentions="true"  data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-doi="{{$ctrl.doi}}"></div>'
+    template: '<div id="altm1" ng-if="$ctrl.altmetric_id" class="altmetric-embed" data-hide-no-mentions="true"  data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-altmetric-id="{{$ctrl.altmetric_id}}"></div>'
 }; /*
     * altmetrics.component.js
     */
@@ -56,18 +56,20 @@ var PrimoStudioAltmetricsController = function () {
     _createClass(PrimoStudioAltmetricsController, [{
         key: 'getConfigApiKey',
         value: function getConfigApiKey() {
-            return this.studioConfig[0].apikey;
+            return this.studioConfig[0].apikey || '';
         }
     }, {
         key: 'getConfigISBN',
         value: function getConfigISBN() {
-            return this.studioConfig[0].isbn;
+            return this.studioConfig[0].isbn || '';
         }
     }, {
         key: '$onInit',
         value: function $onInit() {
 
             var vm = this;
+
+            vm.altmetric_id = '';
 
             // the prm-full-view container
             vm.parentElement = vm.$element.parent()[0];
@@ -90,7 +92,8 @@ var PrimoStudioAltmetricsController = function () {
                 // If we've got a doi to work with check whether altmetrics has data for it.
                 // If so, make our div visible and create a new Altmetrics service
                 vm.$timeout(function () {
-                    vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(function () {
+                    vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(function (res) {
+                        vm.altmetric_id = res.data.altmetric_id;
                         try {
                             // Get the altmetrics widget
                             vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {});

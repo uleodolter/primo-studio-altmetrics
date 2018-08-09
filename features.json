@@ -6,7 +6,7 @@
         "what": "",
         "linkGit": "https://github.com/uleodolter/primo-studio-altmetrics",
         "npmid": "primo-studio-altmetrics",
-        "version": "0.0.9",
+        "version": "0.1.0",
         "hook": "prm-full-view-after",
         "config": {
             "form": [
