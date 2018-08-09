@@ -6,11 +6,11 @@
         "what": "",
         "linkGit": "https://github.com/uleodolter/primo-studio-altmetrics",
         "npmid": "primo-studio-altmetrics",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "hook": "prm-full-view-after",
         "config": {
             "form": [
-                { "key":"apikey", "type":"text", "templateOptions":{"label": "Altmetrics API key"} }
+                { "key":"apikey", "type":"text", "templateOptions":{"label": "Altmetrics API key"} },
                 { "key":"isbn", "type":"checkbox", "templateOptions":{"label": "Use ISBN fallback"} }
             ]
         }

@@ -1,3 +1,28 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _altmetrics = require('./altmetrics.controller');
+
+var _altmetrics2 = _interopRequireDefault(_altmetrics);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PrimoStudioAltmetricsComponent = {
+    selector: 'primoStudioAltmetrics',
+    controller: _altmetrics2.default,
+    bindings: { parentCtrl: '<' },
+    template: '<div id="altm1" ng-if="$ctrl.doi" class="altmetric-embed" data-hide-no-mentions="true"  data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-doi="{{$ctrl.doi}}"></div>'
+}; /*
+    * altmetrics.component.js
+    */
+
+exports.default = PrimoStudioAltmetricsComponent;
+
+},{"./altmetrics.controller":2}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -129,3 +154,32 @@ var PrimoStudioAltmetricsController = function () {
 PrimoStudioAltmetricsController.$inject = ['angularLoad', 'primoStudioAltmetricsStudioConfig', '$http', '$scope', '$element', '$timeout', '$window'];
 
 exports.default = PrimoStudioAltmetricsController;
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PrimoStudioAltmetricsModule = undefined;
+
+var _altmetrics = require('./altmetrics.component');
+
+var _altmetrics2 = _interopRequireDefault(_altmetrics);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PrimoStudioAltmetricsModule = exports.PrimoStudioAltmetricsModule = angular.module('primoStudioAltmetrics', []).component(_altmetrics2.default.selector, _altmetrics2.default).name; /**
+                                                                                                                                                                                          * altmetrics.module.js
+                                                                                                                                                                                          */
+
+},{"./altmetrics.component":1}],4:[function(require,module,exports){
+'use strict';
+
+var _altmetrics = require('./altmetrics/altmetrics.module');
+
+var _altmetrics2 = _interopRequireDefault(_altmetrics);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+},{"./altmetrics/altmetrics.module":3}]},{},[4]);

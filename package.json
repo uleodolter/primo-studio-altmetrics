@@ -1,11 +1,11 @@
 {
   "name": "primo-studio-altmetrics",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Primo Studio Altmetrics addon",
-  "main": "dist/main.js",
+  "main": "js/primoStudioAltmetrics.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/babel js --out-dir dist"
+    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioAltmetrics.js -t babelify"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,10 @@
   "homepage": "https://github.com/uleodolter/primo-studio-altmetrics#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-html-import-to-string": "0.0.1",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2"
   }
 }
