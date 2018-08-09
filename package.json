@@ -1,10 +1,11 @@
 {
   "name": "primo-studio-altmetrics",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Primo Studio Altmetrics addon",
-  "main": "js/primoStudioAltmetrics.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel js --out-dir dist"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,15 @@
     "primo-explore"
   ],
   "author": "Ulrich Leodolter <ulrich.leodolter@obvsg.at> (https://www.obvsg.at/)",
-  "contributors" : [
-  ],
+  "contributors": [],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/uleodolter/primo-studio-altmetrics/issues"
   },
-  "homepage": "https://github.com/uleodolter/primo-studio-altmetrics#readme"
+  "homepage": "https://github.com/uleodolter/primo-studio-altmetrics#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-html-import-to-string": "0.0.1",
+    "babel-preset-env": "^1.7.0"
+  }
 }
