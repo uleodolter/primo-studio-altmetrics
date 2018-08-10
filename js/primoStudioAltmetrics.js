@@ -79,6 +79,7 @@ var PrimoStudioAltmetricsController = function () {
 
             var vm = this;
 
+            vm.embed_js = '';
             vm.altmetric_id = '';
             vm.altmetric_badge_type = vm.getConfigBadgeType();
             vm.altmetric_key = vm.getConfigApiKey();
@@ -107,7 +108,8 @@ var PrimoStudioAltmetricsController = function () {
                     vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(function (res) {
                         vm.altmetric_id = res.data.altmetric_id;
                         // Get the altmetrics widget
-                        vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js').then(function () {
+                        vm.embed_js = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now();
+                        vm.angularLoad.loadScript(vm.embed_js).then(function () {
                             // Create our new Primo service
                             var altmetricsSection = {
                                 scrollId: "altmetrics",
@@ -148,10 +150,13 @@ var PrimoStudioAltmetricsController = function () {
             }
 
             // remove altmetric css/js
-            document.body.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some(function (el) {
-                el.remove();
-                return true;
-            });
+            if (vm.embed_js) {
+                document.body.querySelectorAll('[src="' + vm.embed_js + '"]').some(function (el) {
+                    el.remove();
+                    return true;
+                });
+                vm.embed_js = '';
+            }
 
             document.head.querySelectorAll('link').some(function (el) {
                 if (el.id === 'altmetric-embed-css') {
