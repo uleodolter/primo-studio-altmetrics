@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * altmetrics.component.js
  */
 
-var altmetricsTemplate = '<div id="altmetric"\n    ng-if="$ctrl.altmetric_id"\n    class="altmetric-embed"\n    data-hide-no-mentions="true"\n    data-link-target="new"\n    data-badge-type="{{$ctrl.altmetric_badge_type}}"\n    data-badge-details="right"\n    data-altmetric-id="{{$ctrl.altmetric_id}}">\n</div>\n';
+var altmetricsTemplate = '<div id="altmetric_badge"\n    ng-if="$ctrl.altmetric_id"\n    class="altmetric-embed"\n    data-hide-no-mentions="true"\n    data-link-target="new"\n    data-badge-type="{{$ctrl.altmetric_badge_type}}"\n    data-badge-details="right"\n    data-altmetric-id="{{$ctrl.altmetric_id}}">\n</div>\n';
 
 
 var PrimoStudioAltmetricsComponent = {
@@ -106,9 +106,8 @@ var PrimoStudioAltmetricsController = function () {
                 vm.$timeout(function () {
                     vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then(function (res) {
                         vm.altmetric_id = res.data.altmetric_id;
-                        try {
-                            // Get the altmetrics widget
-                            vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {});
+                        // Get the altmetrics widget
+                        vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
                             // Create our new Primo service
                             var altmetricsSection = {
                                 scrollId: "altmetrics",
@@ -116,11 +115,11 @@ var PrimoStudioAltmetricsController = function () {
                                 title: "brief.results.tabs.Altmetrics"
                             };
                             vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, altmetricsSection);
-                        } catch (e) {
-                            console.log(e);
-                        }
-                    }).catch(function (e) {
-                        return;
+                        }, function (res) {
+                            console.log('altmetric loadScript failed: ' + res);
+                        });
+                    }, function (res) {
+                        console.log('altmetric api failed: ' + res);
                     });
                 }, 3000);
             }
@@ -131,10 +130,9 @@ var PrimoStudioAltmetricsController = function () {
             }, function (newVal, oldVal) {
                 if (newVal) {
                     // Get the section body associated with the value we're watching
-                    var altContainer = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
-                    var almt1 = vm.parentElement.children[1].children[0];
-                    if (altContainer && altContainer.appendChild && altm1) {
-                        altContainer.appendChild(altm1);
+                    var sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
+                    if (sectionBody && sectionBody.appendChild) {
+                        sectionBody.appendChild(vm.$element[0]);
                     }
                     unbindWatcher();
                 }
