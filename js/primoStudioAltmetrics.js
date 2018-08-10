@@ -160,14 +160,14 @@ var PrimoStudioAltmetricsController = function () {
             }
 
             // remove altmetric css/js
-            document.head.querySelectorAll('link').forEach(function (link) {
-                if (script.id == 'almetric-embed-css') {
-                    script.parentNode.removeChild(script);
+            document.head.querySelectorAll('link').forEach(function (el) {
+                if (el.id == 'almetric-embed-css') {
+                    el.parentNode.removeChild(el);
                 }
             });
-            document.head.querySelectorAll('script').forEach(function (script) {
-                if (script.id == 'almetric-embed-js') {
-                    script.parentNode.removeChild(script);
+            document.head.querySelectorAll('script').forEach(function (el) {
+                if (el.id == 'almetric-embed-js') {
+                    el.parentNode.removeChild(el);
                 }
             });
         }

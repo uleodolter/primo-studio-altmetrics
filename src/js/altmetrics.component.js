@@ -10,6 +10,6 @@ const PrimoStudioAltmetricsComponent = {
     controller,
     bindings: {parentCtrl: '<'},
     template: altmetricsTemplate
-}
+};
 
 export default PrimoStudioAltmetricsComponent;
