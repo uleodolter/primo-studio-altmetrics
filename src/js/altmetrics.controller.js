@@ -60,9 +60,8 @@ class PrimoStudioAltmetricsController {
             vm.$timeout(() => {
                 vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then((res) => {
                     vm.altmetric_id = res.data.altmetric_id;
-                    try {
-                        // Get the altmetrics widget
-                        vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(() => {});
+                    // Get the altmetrics widget
+                    vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(() => {
                         // Create our new Primo service
                         let altmetricsSection = {
                             scrollId: "altmetrics",
@@ -70,11 +69,11 @@ class PrimoStudioAltmetricsController {
                             title: "brief.results.tabs.Altmetrics"
                         };
                         vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, altmetricsSection);
-                    } catch (e) {
-                        console.log(e);
-                    }
-                }).catch((e) => {
-                    return;
+                    }, (res) => {
+                        console.log('altmetric loadScript failed: ' + res);
+                    });
+                }, (res) => {
+                    console.log('altmetric api failed: ' + res);
                 });
             }, 3000);
         }
@@ -85,10 +84,9 @@ class PrimoStudioAltmetricsController {
         }, (newVal, oldVal) => {
             if (newVal) {
                 // Get the section body associated with the value we're watching
-                let altContainer = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
-                let almt1 = vm.parentElement.children[1].children[0];
-                if (altContainer && altContainer.appendChild && altm1) {
-                    altContainer.appendChild(altm1);
+                let sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
+                if (sectionBody && sectionBody.appendChild) {
+                    sectionBody.appendChild(vm.$element[0]);
                 }
                 unbindWatcher();
             }
