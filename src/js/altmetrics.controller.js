@@ -14,7 +14,7 @@ class PrimoStudioAltmetricsController {
         this.$scope       = $scope;
         this.$element     = $element;
         this.$timeout     = $timeout;
-        this.$windows     = $window;
+        this.$window      = $window;
     }
 
     getConfigApiKey() {
@@ -25,14 +25,20 @@ class PrimoStudioAltmetricsController {
         return this.studioConfig[0].isbn || '';
     }
 
+    getConfigBadgeType() {
+        return this.studioConfig[0].badge_type || 'medium-donut';
+    }
+
     $onInit() {
 
         let vm = this;
 
         vm.altmetric_id = '';
+        vm.altmetric_badge_type = vm.getConfigBadgeType();
+        vm.altmetric_key = vm.getConfigApiKey();
 
-        // the prm-full-view container
-        vm.parentElement = vm.$element.parent()[0];
+        // the prm-full-view container, our parent is prm-full-view-after
+        vm.parentElement = vm.$element.parent().parent()[0];
 
         vm.api = 'doi';
         try {
@@ -99,12 +105,21 @@ class PrimoStudioAltmetricsController {
             delete vm.$window._altmetric;
         }
 
-        if (this.$window._altmetric_embed_init) {
+        if (vm.$window._altmetric_embed_init) {
             delete vm.$window._altmetric_embed_init;
         }
 
-        if (this.$window.AltmetricTemplates) {
+        if (vm.$window.AltmetricTemplates) {
             delete vm.$window.AltmetricTemplates;
+        }
+
+        let embedCss = document.head.getElementById('altmetric-embed-css');
+        if (embedCss) {
+            embedCss.remove();
+        }
+        let embedJs  = document.head.getElementById('altmetric-embed-js');
+        if (embedJs) {
+            embedJs.remove();
         }
     }
 }

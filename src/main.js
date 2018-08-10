@@ -1,3 +1,3 @@
-import PrimoStudioAltmetricsModule from './altmetrics/altmetrics.module';
+import PrimoStudioAltmetricsModule from './js/altmetrics.module';
 
 app.requires.push('primoStudioAltmetrics');

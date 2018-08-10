@@ -11,14 +11,19 @@ var _altmetrics2 = _interopRequireDefault(_altmetrics);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*
+ * altmetrics.component.js
+ */
+
+var altmetricsTemplate = '<div id="altmetric"\n    ng-if="$ctrl.altmetric_id"\n    class="altmetric-embed"\n    data-hide-no-mentions="true"\n    data-link-target="new"\n    data-badge-type="{{$ctrl.altmetric_badge_type}}"\n    data-badge-details="right"\n    data-altmetric-id="{{$ctrl.altmetric_id}}">\n</div>\n';
+
+
 var PrimoStudioAltmetricsComponent = {
     selector: 'primoStudioAltmetrics',
     controller: _altmetrics2.default,
     bindings: { parentCtrl: '<' },
-    template: '<div id="altm1" ng-if="$ctrl.altmetric_id" class="altmetric-embed" data-hide-no-mentions="true"  data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-altmetric-id="{{$ctrl.altmetric_id}}"></div>'
-}; /*
-    * altmetrics.component.js
-    */
+    template: altmetricsTemplate
+};
 
 exports.default = PrimoStudioAltmetricsComponent;
 
@@ -50,7 +55,7 @@ var PrimoStudioAltmetricsController = function () {
         this.$scope = $scope;
         this.$element = $element;
         this.$timeout = $timeout;
-        this.$windows = $window;
+        this.$window = $window;
     }
 
     _createClass(PrimoStudioAltmetricsController, [{
@@ -64,15 +69,22 @@ var PrimoStudioAltmetricsController = function () {
             return this.studioConfig[0].isbn || '';
         }
     }, {
+        key: 'getConfigBadgeType',
+        value: function getConfigBadgeType() {
+            return this.studioConfig[0].badge_type || 'medium-donut';
+        }
+    }, {
         key: '$onInit',
         value: function $onInit() {
 
             var vm = this;
 
             vm.altmetric_id = '';
+            vm.altmetric_badge_type = vm.getConfigBadgeType();
+            vm.altmetric_key = vm.getConfigApiKey();
 
-            // the prm-full-view container
-            vm.parentElement = vm.$element.parent()[0];
+            // the prm-full-view container, our parent is prm-full-view-after
+            vm.parentElement = vm.$element.parent().parent()[0];
 
             vm.api = 'doi';
             try {
@@ -141,12 +153,21 @@ var PrimoStudioAltmetricsController = function () {
                 delete vm.$window._altmetric;
             }
 
-            if (this.$window._altmetric_embed_init) {
+            if (vm.$window._altmetric_embed_init) {
                 delete vm.$window._altmetric_embed_init;
             }
 
-            if (this.$window.AltmetricTemplates) {
+            if (vm.$window.AltmetricTemplates) {
                 delete vm.$window.AltmetricTemplates;
+            }
+
+            var embedCss = document.head.getElementById('altmetric-embed-css');
+            if (embedCss) {
+                embedCss.remove();
+            }
+            var embedJs = document.head.getElementById('altmetric-embed-js');
+            if (embedJs) {
+                embedJs.remove();
             }
         }
     }]);
@@ -179,7 +200,7 @@ var PrimoStudioAltmetricsModule = exports.PrimoStudioAltmetricsModule = angular.
 },{"./altmetrics.component":1}],4:[function(require,module,exports){
 'use strict';
 
-var _altmetrics = require('./altmetrics/altmetrics.module');
+var _altmetrics = require('./js/altmetrics.module');
 
 var _altmetrics2 = _interopRequireDefault(_altmetrics);
 
@@ -187,4 +208,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 app.requires.push('primoStudioAltmetrics');
 
-},{"./altmetrics/altmetrics.module":3}]},{},[4]);
+},{"./js/altmetrics.module":3}]},{},[4]);
