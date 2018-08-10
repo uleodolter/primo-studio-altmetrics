@@ -14,7 +14,7 @@
           "key": "badgetype",
           "type": "select",
           "templateOptions": {
-            "label": "Altemtrics Badge type",
+            "label": "Altmetrics Badge type",
             "options": [
               { "value": "Default", "name":"Default" },
               { "value": "donut", "name":"Small donut" },
