@@ -61,7 +61,7 @@ class PrimoStudioAltmetricsController {
                 vm.$http.get('https://api.altmetric.com/v1/' + vm.api + '/' + vm.doi).then((res) => {
                     vm.altmetric_id = res.data.altmetric_id;
                     // Get the altmetrics widget
-                    vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(() => {
+                    vm.angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js').then(() => {
                         // Create our new Primo service
                         let altmetricsSection = {
                             scrollId: "altmetrics",
@@ -94,8 +94,6 @@ class PrimoStudioAltmetricsController {
     }
 
 
-    // You'd also need to look at removing the various css/js scripts loaded by this.
-    // refer to: https://github.com/Det-Kongelige-Bibliotek/primo-explore-rex
     $onDestroy() {
         let vm = this;
 
@@ -103,24 +101,25 @@ class PrimoStudioAltmetricsController {
             delete vm.$window._altmetric;
         }
 
-        if (vm.$window._altmetric_embed_init) {
-            delete vm.$window._altmetric_embed_init;
-        }
-
-        if (vm.$window.AltmetricTemplates) {
-            delete vm.$window.AltmetricTemplates;
-        }
-
         // remove altmetric css/js
-        document.head.querySelectorAll('link').forEach((el) => {
-            if (el.id == 'almetric-embed-css') {
-                el.parentNode.removeChild(el);
-            }
+        document.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some((el) => {
+            el.remove();
+            return true;
         });
-        document.head.querySelectorAll('script').forEach((el) => {
-            if (el.id == 'almetric-embed-js') {
-                el.parentNode.removeChild(el);
+
+        document.head.querySelectorAll('link').some((el) => {
+            if (el.id === 'altmetric-embed-css') {
+                el.remove();
+                return true;
             }
+            return false;
+        });
+        document.head.querySelectorAll('script').some((el) => {
+            if (el.id === 'altmetric-embed-js') {
+                el.remove();
+                return true;
+            }
+            return false;
         });
     }
 }
