@@ -6,7 +6,7 @@
     "what": "Altmetrics",
     "linkGit": "https://github.com/uleodolter/primo-studio-altmetrics",
     "npmid": "primo-studio-altmetrics",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "hook": "prm-full-view-after",
     "config": {
       "form": [
@@ -28,7 +28,7 @@
         },
         {
           "key": "apikey",
-          "type": "text",
+          "type": "input",
           "templateOptions": {
             "label": "Altmetrics API key"
           }

@@ -111,14 +111,17 @@ class PrimoStudioAltmetricsController {
             delete vm.$window.AltmetricTemplates;
         }
 
-        let embedCss = document.head.getElementById('altmetric-embed-css');
-        if (embedCss) {
-            embedCss.remove();
-        }
-        let embedJs  = document.head.getElementById('altmetric-embed-js');
-        if (embedJs) {
-            embedJs.remove();
-        }
+        // remove altmetric css/js
+        document.head.querySelectorAll('link').forEach((link) => {
+            if (script.id == 'almetric-embed-css') {
+                script.parentNode.removeChild(script);
+            }
+        });
+        document.head.querySelectorAll('script').forEach((script) => {
+            if (script.id == 'almetric-embed-js') {
+                script.parentNode.removeChild(script);
+            }
+        });
     }
 }
 
