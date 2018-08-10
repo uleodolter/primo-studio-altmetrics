@@ -98,6 +98,7 @@ class PrimoStudioAltmetricsController {
 
     $onDestroy() {
         let vm = this;
+        let el = null;
 
         if (vm.$window._altmetric) {
             delete vm.$window._altmetric;
@@ -105,27 +106,21 @@ class PrimoStudioAltmetricsController {
 
         // remove altmetric css/js
         if (vm.embed_js) {
-            document.body.querySelectorAll('[src="' + vm.embed_js + '"]').some((el) => {
+            el = document.body.querySelector('[src="' + vm.embed_js + '"]');
+            if (el) {
                 el.remove();
-                return true;
-            });
+            }
             vm.embed_js = '';
         }
 
-        document.head.querySelectorAll('link').some((el) => {
-            if (el.id === 'altmetric-embed-css') {
-                el.remove();
-                return true;
-            }
-            return false;
-        });
-        document.head.querySelectorAll('script').some((el) => {
-            if (el.id === 'altmetric-embed-js') {
-                el.remove();
-                return true;
-            }
-            return false;
-        });
+        el = document.head.querySelector('link[id="altmetric-embed-css"]');
+        if (el) {
+            el.remove();
+        }
+        el = document.head.querySelector('script[id="altmetric-embed-js"]');
+        if (el) {
+            el.remove();
+        }
     }
 }
 
