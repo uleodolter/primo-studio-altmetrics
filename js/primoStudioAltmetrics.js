@@ -71,7 +71,7 @@ var PrimoStudioAltmetricsController = function () {
     }, {
         key: 'getConfigBadgeType',
         value: function getConfigBadgeType() {
-            return this.studioConfig[0].badge_type || 'medium-donut';
+            return this.studioConfig[0].badgetype || 'medium-donut';
         }
     }, {
         key: '$onInit',

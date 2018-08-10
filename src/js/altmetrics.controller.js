@@ -26,7 +26,7 @@ class PrimoStudioAltmetricsController {
     }
 
     getConfigBadgeType() {
-        return this.studioConfig[0].badge_type || 'medium-donut';
+        return this.studioConfig[0].badgetype || 'medium-donut';
     }
 
     $onInit() {
