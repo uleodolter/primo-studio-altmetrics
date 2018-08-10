@@ -16,13 +16,13 @@
           "templateOptions": {
             "label": "Altemtrics Badge type",
             "options": [
-              { "value": "Default" },
-              { "value": "donut" },
-              { "value": "medium-donut" },
-              { "value": "large-donut" },
-              { "value": "bar" },
-              { "value": "medium-bar" },
-              { "value": "large-bar" }
+              { "value": "Default", "name":"Default" },
+              { "value": "donut", "name":"Small donut" },
+              { "value": "medium-donut", "name":"Medium donut" },
+              { "value": "large-donut", "name":"Large donut" },
+              { "value": "bar", "name":"Small bar" },
+              { "value": "medium-bar", "name":"Medium bar" },
+              { "value": "large-bar", "name":"Large bar" }
             ]
           }
         },
