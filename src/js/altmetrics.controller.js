@@ -102,7 +102,7 @@ class PrimoStudioAltmetricsController {
         }
 
         // remove altmetric css/js
-        document.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some((el) => {
+        document.body.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some((el) => {
             el.remove();
             return true;
         });

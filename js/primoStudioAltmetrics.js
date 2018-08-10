@@ -148,7 +148,7 @@ var PrimoStudioAltmetricsController = function () {
             }
 
             // remove altmetric css/js
-            document.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some(function (el) {
+            document.body.querySelectorAll('[src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"]').some(function (el) {
                 el.remove();
                 return true;
             });

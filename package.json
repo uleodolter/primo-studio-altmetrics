@@ -1,6 +1,6 @@
 {
   "name": "primo-studio-altmetrics",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Primo Studio Altmetrics addon",
   "main": "js/primoStudioAltmetrics.js",
   "scripts": {
