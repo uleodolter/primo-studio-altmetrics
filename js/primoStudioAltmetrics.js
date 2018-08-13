@@ -112,9 +112,9 @@ var PrimoStudioAltmetricsController = function () {
                         vm.angularLoad.loadScript(vm.embed_js).then(function () {
                             // Create our new Primo service
                             var altmetricsSection = {
-                                scrollId: "altmetrics",
-                                serviceName: "altmetrics",
-                                title: "brief.results.tabs.Altmetrics"
+                                scrollId: 'altmetrics',
+                                serviceName: 'altmetrics',
+                                title: 'brief.results.tabs.Altmetrics'
                             };
                             vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, altmetricsSection);
                         }, function (res) {
@@ -129,7 +129,7 @@ var PrimoStudioAltmetricsController = function () {
             // move the altmetrics widget into the new Altmetrics service section
             var unbindWatcher = vm.$scope.$watch(function () {
                 return vm.parentElement.querySelector('h4[translate="brief.results.tabs.Altmetrics"]');
-            }, function (newVal, oldVal) {
+            }, function (newVal, _oldVal) {
                 if (newVal) {
                     // Get the section body associated with the value we're watching
                     var sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
@@ -204,6 +204,8 @@ var _altmetrics2 = _interopRequireDefault(_altmetrics);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-app.requires.push('primoStudioAltmetrics');
+app.requires.push(_altmetrics2.default); /**
+                                          * main.js
+                                          */
 
 },{"./js/altmetrics.module":3}]},{},[4]);

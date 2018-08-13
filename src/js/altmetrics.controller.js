@@ -66,9 +66,9 @@ class PrimoStudioAltmetricsController {
                     vm.angularLoad.loadScript(vm.embed_js).then(() => {
                         // Create our new Primo service
                         let altmetricsSection = {
-                            scrollId: "altmetrics",
-                            serviceName: "altmetrics",
-                            title: "brief.results.tabs.Altmetrics"
+                            scrollId: 'altmetrics',
+                            serviceName: 'altmetrics',
+                            title: 'brief.results.tabs.Altmetrics'
                         };
                         vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, altmetricsSection);
                     }, (res) => {
@@ -83,7 +83,7 @@ class PrimoStudioAltmetricsController {
         // move the altmetrics widget into the new Altmetrics service section
         let unbindWatcher = vm.$scope.$watch(() => {
             return vm.parentElement.querySelector('h4[translate="brief.results.tabs.Altmetrics"]');
-        }, (newVal, oldVal) => {
+        }, (newVal, _oldVal) => {
             if (newVal) {
                 // Get the section body associated with the value we're watching
                 let sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];

@@ -6,10 +6,16 @@ Primo Studio Altmetrics addon to the Primo record full display.
 
 See [Primo Studio](https://github.com/ExLibrisGroup/Primo-Studio) project documentation.
 
-## License
+## Primo Studio Config options
 
-See [LICENSE](LICENSE) and [LICENSE.RoyalDanishLibrary](LICENSE.RoyalDanishLibrary)
+See [features.json](features.json)
 
+Note: _Altmetrics API key_ currently not used.
+
+## Altmetric API and badges
+
+- https://www.altmetric.com/products/altmetric-api/
+- https://www.altmetric.com/products/altmetric-badges/
 
 ## Author
 
