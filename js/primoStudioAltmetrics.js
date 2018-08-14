@@ -158,7 +158,7 @@ var PrimoStudioAltmetricsController = function () {
                 }
                 vm.embed_js = '';
             }
-            document.body.querySelectorAll('script', function (script) {
+            document.body.querySelectorAll('script').forEach(function (script) {
                 if (script.src.startsWith('https://api.altmetric.com/v1/id/')) {
                     script.parentNode.removeChild(script);
                 }

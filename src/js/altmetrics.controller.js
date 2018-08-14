@@ -112,7 +112,7 @@ class PrimoStudioAltmetricsController {
             }
             vm.embed_js = '';
         }
-        document.body.querySelectorAll('script', (script) => {
+        document.body.querySelectorAll('script').forEach((script) => {
             if (script.src.startsWith('https://api.altmetric.com/v1/id/')) {
                 script.parentNode.removeChild(script);
             }
