@@ -6,7 +6,7 @@
     "what": "Altmetrics",
     "linkGit": "https://github.com/uleodolter/primo-studio-altmetrics",
     "npmid": "primo-studio-altmetrics",
-    "version": "0.2.8",
+    "version": "1.0.0",
     "hook": "prm-full-view-after",
     "config": {
       "form": [
@@ -16,13 +16,34 @@
           "templateOptions": {
             "label": "Altmetrics Badge type",
             "options": [
-              { "value": "Default", "name":"Default" },
-              { "value": "donut", "name":"Small donut" },
-              { "value": "medium-donut", "name":"Medium donut" },
-              { "value": "large-donut", "name":"Large donut" },
-              { "value": "bar", "name":"Small bar" },
-              { "value": "medium-bar", "name":"Medium bar" },
-              { "value": "large-bar", "name":"Large bar" }
+              {
+                "value": "Default",
+                "name": "Default"
+              },
+              {
+                "value": "donut",
+                "name": "Small donut"
+              },
+              {
+                "value": "medium-donut",
+                "name": "Medium donut"
+              },
+              {
+                "value": "large-donut",
+                "name": "Large donut"
+              },
+              {
+                "value": "bar",
+                "name": "Small bar"
+              },
+              {
+                "value": "medium-bar",
+                "name": "Medium bar"
+              },
+              {
+                "value": "large-bar",
+                "name": "Large bar"
+              }
             ]
           }
         },
