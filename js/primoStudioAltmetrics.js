@@ -205,12 +205,8 @@ var PrimoStudioAltmetricsModule = exports.PrimoStudioAltmetricsModule = angular.
 
 var _altmetrics = require('./js/altmetrics.module');
 
-var _altmetrics2 = _interopRequireDefault(_altmetrics);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-app.requires.push(_altmetrics2.default); /**
-                                          * main.js
-                                          */
+app.requires.push(_altmetrics.PrimoStudioAltmetricsModule); /**
+                                                             * main.js
+                                                             */
 
 },{"./js/altmetrics.module":3}]},{},[4]);
