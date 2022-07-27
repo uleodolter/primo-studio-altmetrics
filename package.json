@@ -3,9 +3,10 @@
   "version": "1.0.3",
   "description": "Primo Studio Altmetrics addon",
   "main": "js/primoStudioAltmetrics.js",
+  "type": "module",
   "scripts": {
-    "test": "./node_modules/.bin/eslint src/",
-    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioAltmetrics.js -t babelify",
+    "test": "eslint src/",
+    "build": "webpack",
     "version": "jq \".[0].version = `jq .version package.json`\" features.json | sponge features.json && git add features.json"
   },
   "repository": {
@@ -26,13 +27,10 @@
   },
   "homepage": "https://github.com/uleodolter/primo-studio-altmetrics#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-html-import-to-string": "0.0.1",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
-    "browserify": "^16.5.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-angular": "^3.3.0"
+    "eslint": "^8.20.0",
+    "eslint-plugin-angular": "^4.1.0",
+    "html-loader": "^4.1.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

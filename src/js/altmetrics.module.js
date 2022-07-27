@@ -2,7 +2,7 @@
  * altmetrics.module.js
  */
 
-import PrimoStudioAltmetricsComponent from './altmetrics.component';
+import PrimoStudioAltmetricsComponent from './altmetrics.component.js';
 
 export const PrimoStudioAltmetricsModule = angular
     .module('primoStudioAltmetrics', [])

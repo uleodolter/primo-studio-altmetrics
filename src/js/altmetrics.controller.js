@@ -31,7 +31,7 @@ class PrimoStudioAltmetricsController {
 
     $onInit() {
 
-        let vm = this;
+        const vm = this;
 
         vm.embed_js = '';
         vm.altmetric_id = '';
@@ -65,7 +65,7 @@ class PrimoStudioAltmetricsController {
                     vm.embed_js = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now();
                     vm.angularLoad.loadScript(vm.embed_js).then(() => {
                         // Create our new Primo service
-                        let altmetricsSection = {
+                        const altmetricsSection = {
                             scrollId: 'altmetrics',
                             serviceName: 'altmetrics',
                             title: 'brief.results.tabs.Altmetrics'
@@ -86,7 +86,7 @@ class PrimoStudioAltmetricsController {
         }, (newVal, _oldVal) => {
             if (newVal) {
                 // Get the section body associated with the value we're watching
-                let sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
+                const sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
                 if (sectionBody && sectionBody.appendChild) {
                     sectionBody.appendChild(vm.$element[0]);
                 }
@@ -97,7 +97,7 @@ class PrimoStudioAltmetricsController {
 
 
     $onDestroy() {
-        let vm = this;
+        const vm = this;
         let el = null;
 
         if (vm.$window._altmetric) {

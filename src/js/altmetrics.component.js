@@ -3,7 +3,7 @@
  */
 
 import altmetricsTemplate from '../html/altmetrics.template.html';
-import controller from './altmetrics.controller';
+import controller from './altmetrics.controller.js';
 
 const PrimoStudioAltmetricsComponent = {
     selector: 'primoStudioAltmetrics',
